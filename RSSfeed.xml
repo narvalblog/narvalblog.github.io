@@ -11,6 +11,11 @@
 <generator>Narval</generator>
 <ttl>120</ttl>
 <item>
+<title>Utilitaire pour créer un article</title>
+<link>https://narvalblog.github.io/utilitaire-pour-creer-un-article.html</link>
+<description>Utilitaire pour créer un article facilement.</description>
+</item>
+<item>
 <title>Documentation complète</title>
 <link>https://narvalblog.github.io/documentation-complete.html</link>
 <description>Documentation de Narval, un générateur de blog statique.</description>
