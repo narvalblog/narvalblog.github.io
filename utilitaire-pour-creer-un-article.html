@@ -45,7 +45,7 @@
 					<a class="tag" style="background:rgb(233, 206, 206)" href="https://narvalblog.github.io/documentation/index.html">Documentation</a>
 
 </div>
-<div class="content"><p>Voici un petit outil pratique qui permet de générer une page "post" sans avoir à en dupliquer une déjà présente. Un article peut également contenir le champ "modified" (date de modification) qui n'apparait pas ici puisque cette page est faite uniquement pour créer un article. Les champs obligatoires sont marquées de "*"</p>
+<div class="content"><p>Voici un petit outil pratique qui permet de générer une page "post" sans avoir à en dupliquer une déjà présente. Un article peut également contenir le champ "modified" (date de modification) qui n'apparait pas ici puisque cette page est faite uniquement pour créer un article. Les champs obligatoires sont marqués d'une astérisque.</p>
 
 <div class="myForm">
 	<h2>Titre de l'article *</h2>
@@ -109,7 +109,7 @@
 		min111 = today111.getUTCMinutes(),
 
 		title111 = document.getElementById('title111').value.replace(/</g, '&lt;').replace(/>/g, '&gt;'),
-		date111 = document.getElementById('date111').value,
+		date111 = document.getElementById('date111'),
 		slug111 = document.getElementById('slug111').value,
 		categories111 = document.getElementById('categories111').value,
 		description111 = document.getElementById('description111').value,
@@ -123,9 +123,8 @@
 
 	date111.value = [year111, month111, day111].join('-') + ' ' + [hour111, min111].join(':')
 	bt111.addEventListener('click', function() {
-		console.log(content111, categories111)
 		result111.innerHTML = 'title: '+title111+'<br>'
-		result111.innerHTML += 'date: '+date111+'<br>'
+		result111.innerHTML += 'date: '+date111.value+'<br>'
 		if (slug111 !== '') result111.innerHTML += 'slug: '+slug111+'<br>'
 		result111.innerHTML += 'categories: '+categories111+'<br>'
 		if (description111 !== '') result111.innerHTML += 'description: '+description111+'<br>'
