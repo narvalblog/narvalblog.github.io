@@ -12,7 +12,7 @@
 <link rel="icon" href="https://narvalblog.github.io/themes/Minival/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="https://narvalblog.github.io/themes/Minival/base.css" media="screen" />
 <link href="https://fonts.googleapis.com/css?family=Alegreya:400,700|Raleway" rel="stylesheet"> 
-<meta name="description" content="Documentation de Narval, un générateur de blog statique." />
+<meta name="description" content="Comment publier son blog Narval sur Github, pas à pas." />
 </head>
 
 <body>
@@ -39,13 +39,59 @@
 </header>
 
 <article itemscope itemtype="http://schema.org/BlogPosting">
-<header><h1>Documentation complète</h1></header>
+<header><h1>Publier son blog sur Github</h1></header>
 <div class="metas">
-<time itemprop="dateCreated" datetime="2017-07-06T22:32:00.000000+00:00">06 juillet 2017</time>
-					<a class="tag" style="background:rgb(233, 206, 206)" href="https://narvalblog.github.io/documentation/index.html">Documentation</a>
+<time itemprop="dateCreated" datetime="2017-12-31T22:05:00.000000+00:00">31 décembre 2017</time>
+					<a class="tag" style="background:" href="https://narvalblog.github.io/documentation/index.html">Documentation</a>
 
 </div>
-<div class="content"><p><em>Narval</em> est un générateur de blog statique écrit en Python. Il s’utilise avec le terminal et ne dispose que d’une seule ligne de commande permettant la génération d’un blog. Le principe est simple&nbsp;: </p>
+<div itemprop="about"><p>Voyons ici comment mettre en ligne son blog <em>Narval</em> sur les serveurs de <em>Github</em>.</p></div>
+<div class="content"><h2>1. <em>Git</em></h2>
+
+<p><em>Github</em> fonctionne avec <em>Git</em> qui est un logiciel de gestion de versions décentralisé. Avec cet outil, il est possible de gérer facilement les versions d'un dossier et son contenu. Cela n'est pas très utile pour ton blog, mais <em>Github</em> est à la base fait pour les développeurs ayant besoin de ce genre d'outil. <em>Narval</em> ne permet d'ailleurs pas de gérer les versions de ton blog, puisqu'il écrase tous les fichiers à chaque fois que tu reconstruis ton blog avec la commande <code>python3 build.py</code>. Ce n'est pas un problème, car si tu souhaites versionner ton blog, il convient plutôt de le faire sur le dossier <span class="path">content/</span>, mais ne nous égarons pas.</p>
+<p>Tu as donc tout d'abord besoin de <em>Git</em>. Si tu l'as déjà, la commande <code>git --version</code> dans un terminal affichera le numéro de version. Sinon, <a href="https://git-scm.com/book/fr/v1/D%C3%A9marrage-rapide-Installation-de-Git">cette page</a> indique la marche à suivre pour l'installer.</p>
+
+<h2>2. <em>Github</em></h2>
+
+<h3>Inscription sur <em>Github</em></h3>
+<p>C'est ici que l'inscription se passe&nbsp;: <a href="https://github.com/">https://github.com/</a>.</p>
+<p>L'inscription est facile, mais il faut faire attention à une chose : <strong>le nom d'utilisateur choisi figurera dans l'adresse URL du blog</strong>(https://username.github.io). Choisis donc bien ton nom d'utilisateur. Il te sera demandé si tu veux un compte gratuit ou payant. Le compte gratuit est suffisant pour l'usage que tu en auras et, si besoin, tu pourras passer à un compte payant plus tard sans soucis.</p>
+<p><img src="attachments/github/1.png" alt="Page d'inscription sur Github."/></p>
+
+<h3>Création d'un nouveau dépôt</h3>
+<p>Une fois inscrit et connecté, tu crées un nouveau dépôt qui accueillera les fichiers et dossiers de ton blog. Pour ce faire, cliques sur "Start a project" ou "New repository".</p>
+<p>Le nom du dépôt se compose de ton nom d'utilisateur suivi de ".github.io". Dans le champ "Repository name" indique donc "<em>username</em>.github.io".<p>
+<p>Voilà, tu peux alors laisser le reste tel quel et cliquer sur "Create repository". Facile&nbsp;!</p>
+<p><img src="attachments/github/2.png" alt="Création d'un dépôt sur Github."/></p>
+
+<h2>3. Blog</h2>
+
+<p>Dans le dossier <span class="path">content/</span> de ton blog se trouve le fichier <span class="path">CONFIG</span>. Pour la clef <code>url</code>, met la valeur <code>https://<em>username</em>.github.io</code> si ce n'est pas déjà fait.</p>
+<p>Ensuite, il faut générer le blog avec la commande <code>python3 build.py</code> (voir la documentation si besoin).</p>
+<p>Enfin, il faut se placer dans le dossier du blog généré (pas le <span class="path">-local</span>, l'autre qui porte le même non, sans le suffixe "-local") et saisir plusieurs commandes dans le terminal&nbsp;:</p>
+<ol>
+	<li><code>git init</code>, qui permet d'initialiser <em>Git</em> dans le dossier du blog à mettre en ligne;</li>
+	<li><code>git add .</code>, pour prendre en charge tous les fichiers du blog dans le versionnage;</li>
+	<li><code>git commit -m "maj"</code>, pour réaliser une version avec un message à choisir (ici "maj", mais ce message n'a aucune importance dans notre cas);</li>
+	<li><code>git remote add origin https://github.com/<em>username</em>/<em>username</em>.github.io.git</code>, pour que les enregistrements se fassent au bon endroit sur <em>Github</em>;</li>
+	<li><code>git push -u origin master</code>, pour mettre en ligne la ou les versions créées précédemment.</li>
+</ol>
+<p>Suite à cette dernière commande, il te sera demandé ton nom d'utilisateur, puis ton mot de passe <em>Github</em>.</p>
+<p>Cette série de commande n'est pas à resaisir dans son intégralité à chaque fois qu'un nouvel article est à publier, car <em>Narval</em> conserve l'initialisation de <em>git</em> et est toujours synchronisé avec <em>Github</em> (à moins que tu aies supprimé le dossier généré manuellement, ce qui est déconseillé, car peu pratique). Du coup, pour chaque nouvel article, voici ce qu'il faut saisir dans le dossier fraîchement regénéré&nbsp;:</p>
+<ol>
+	<li><code>git add .</code>;</li>
+	<li><code>git commit -m "maj"</code>;</li>
+	<li><code>git push origin master</code>.</li>
+</ol>
+<p>Une prochaine mise à jour permettra la publication directe du blog, dès sa génération. Cela permettra de ne plus avoir à saisir ces 3 commandes dans le dossier généré.</p>
+<p>Félicitations, ton blog est en ligne&nbsp;!</p>
+
+
+
+
+
+
+<p><em>Narval</em> est un générateur de blog statique écrit en Python. Il s’utilise avec le terminal et ne dispose que d’une seule ligne de commande permettant la génération d’un blog. Le principe est simple&nbsp;: </p>
 
 <ol>
 <li>tous les fichiers utiles au blog sont dans un dossier;</li>
@@ -54,7 +100,6 @@
 </ol>
 
 <p>Le guide rapide de <em>Narval</em> permet une bonne entrée en matière. Cette documentation est plus poussée et reprend en détail chaque point du guide rapide.</p>
-
 
 
 <h2 id="sommaire">Sommaire</h2>
@@ -291,7 +336,6 @@ Si tu souhaites écrire tes pages avec du Markdown, il est nécessaire d’insta
 </article>
 <a class="btNav" href="https://narvalblog.github.io/index.html">Accueil</a>
 
-<br><a href='theme-minival.html'>←&nbsp;Thème <em>Minival</em></a>
 
 			<footer>
 <p>
