@@ -11,6 +11,11 @@
 <generator>Narval</generator>
 <ttl>120</ttl>
 <item>
+<title>Publier son blog sur Github</title>
+<link>https://narvalblog.github.io/publier-github.html</link>
+<description>Comment publier son blog Narval sur Github, pas à pas.</description>
+</item>
+<item>
 <title>Documentation complète</title>
 <link>https://narvalblog.github.io/documentation-complete.html</link>
 <description>Documentation de Narval, un générateur de blog statique.</description>
